@@ -5,7 +5,7 @@ import { vars } from './theme.css';
 globalStyle('*', {
   boxSizing: 'border-box',
   margin: 0,
-  // border: '1px solid salmon',
+  // outline: '1px solid slategrey',
 });
 
 globalStyle('html', {
@@ -71,5 +71,13 @@ globalStyle('a:hover', {
 });
 
 globalStyle('a:visited', {
+  color: vars.colors.accentTextMuted,
+});
+
+globalStyle('ul', {
+  // paddingLeft: '2rem',
+});
+
+globalStyle('li::marker', {
   color: vars.colors.accentTextMuted,
 });

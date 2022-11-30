@@ -4,11 +4,12 @@ import {
   createGlobalTheme,
 } from '@vanilla-extract/css';
 
-import { plum, plumDark, mauve, mauveDark } from '@radix-ui/colors';
+import { mauve, mauveDark, plum, plumDark } from '@radix-ui/colors';
+import { Cyan } from './openPropsColors';
 
 const root = createGlobalTheme(':root', {
   fonts: {
-    heading: '"Karla", sans-serif',
+    heading: '"Cabin", sans-serif',
     body: '"Open Sans", sans-serif',
   },
   sizes: {
@@ -20,6 +21,7 @@ const root = createGlobalTheme(':root', {
   borders: {
     sm: '3px',
     md: '6px',
+    lg: '12px',
     images: '0px',
     buttons: '0px',
   },
@@ -44,16 +46,21 @@ const colors = createThemeContract({
   bordersHover: '',
   solid: '',
   solidHover: '',
-  accentSolid: '',
-  accentSolidHover: '',
+
   accentBackground: '',
   accentComponent: '',
   accentComponentHover: '',
   accentComponentSelected: '',
+
+  accentSubtleBorders: '',
   accentBorders: '',
   accentBordersHover: '',
-  accentText: '',
+
+  accentSolid: '',
+  accentSolidHover: '',
+
   accentTextMuted: '',
+  accentText: '',
 });
 
 export const lightTheme = createTheme(colors, {
@@ -76,23 +83,65 @@ export const lightTheme = createTheme(colors, {
   text: mauve.mauve12,
   textMuted: mauve.mauve11,
 
-  accentSolid: plum.plum9,
-  accentSolidHover: plum.plum10,
-
   accentBackground: plum.plum2,
 
-  accentComponent: plum.plum4,
-  accentComponentHover: plum.plum5,
-  accentComponentSelected: plum.plum6,
+  accentComponent: plum.plum3,
+  accentComponentHover: plum.plum4,
+  accentComponentSelected: plum.plum5,
+
+  accentSubtleBorders: plum.plum6,
 
   accentBorders: plum.plum7,
   accentBordersHover: plum.plum8,
 
-  accentText: plum.plum12,
+  accentSolid: plum.plum9,
+  accentSolidHover: plum.plum10,
+
   accentTextMuted: plum.plum11,
+  accentText: plum.plum12,
 });
 
+const radixDark = {
+  accentBackground: plumDark.plum2,
+
+  accentComponent: plumDark.plum3,
+  accentComponentHover: plumDark.plum4,
+  accentComponentSelected: plumDark.plum5,
+
+  accentSubtleBorders: plumDark.plum6,
+
+  accentBorders: plumDark.plum7,
+  accentBordersHover: plumDark.plum8,
+
+  accentSolid: plumDark.plum9,
+  accentSolidHover: plumDark.plum10,
+
+  accentTextMuted: plumDark.plum11,
+  accentText: plumDark.plum12,
+};
+
+const openPropsDark = {
+  accentBackground: Cyan['--cyan-1'],
+
+  accentComponent: Cyan['--cyan-10'],
+  accentComponentHover: Cyan['--cyan-9'],
+  accentComponentSelected: Cyan['--cyan-8'],
+
+  accentSubtleBorders: Cyan['--cyan-7'],
+
+  accentBorders: Cyan['--cyan-6'],
+  accentBordersHover: Cyan['--cyan-5'],
+
+  accentSolid: Cyan['--cyan-4'],
+  accentSolidHover: Cyan['--cyan-3'],
+
+  accentTextMuted: Cyan['--cyan-2'],
+  accentText: Cyan['--cyan-1'],
+};
+
 export const darkTheme = createTheme(colors, {
+  ...radixDark,
+  // ...openPropsDark,
   white: '#000000', // sorry
   black: '#ffffff',
 
@@ -111,21 +160,6 @@ export const darkTheme = createTheme(colors, {
 
   text: mauveDark.mauve12,
   textMuted: mauveDark.mauve11,
-
-  accentBackground: plumDark.plum2,
-
-  accentComponent: plumDark.plum4,
-  accentComponentHover: plumDark.plum5,
-  accentComponentSelected: plumDark.plum6,
-
-  accentBorders: plumDark.plum7,
-  accentBordersHover: plumDark.plum8,
-
-  accentSolid: plumDark.plum9,
-  accentSolidHover: plumDark.plum10,
-
-  accentText: plumDark.plum12,
-  accentTextMuted: plumDark.plum11,
 });
 
 export const vars = { ...root, colors };

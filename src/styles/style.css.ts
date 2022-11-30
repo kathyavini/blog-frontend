@@ -21,8 +21,8 @@ export const button = styleVariants({
     buttonBase,
     {
       backgroundColor: 'transparent',
-      border: `1px solid ${vars.colors.solid}`,
-      color: vars.colors.text,
+      border: `1px solid ${vars.colors.accentText}`,
+      color: vars.colors.accentText,
 
       ':hover': {
         color: vars.colors.accentTextMuted,
@@ -33,13 +33,13 @@ export const button = styleVariants({
   filled: [
     buttonBase,
     {
-      backgroundColor: vars.colors.accentComponent,
+      backgroundColor: vars.colors.accentComponentHover,
       color: vars.colors.accentText,
-      border: `1px solid ${vars.colors.accentComponent}`,
+      border: `1px solid ${vars.colors.accentComponentHover}`,
 
       ':hover': {
-        backgroundColor: vars.colors.accentComponentHover,
-        border: `1px solid ${vars.colors.accentComponentHover}`,
+        backgroundColor: vars.colors.accentComponentSelected,
+        border: `1px solid ${vars.colors.accentComponentSelected}`,
       },
     },
   ],
@@ -164,4 +164,36 @@ export const divider = styleVariants({
       marginBlock: '0.5rem',
     },
   ],
+});
+
+export const themeToggle = style({
+  padding: '.8em .8em',
+  backgroundColor: 'transparent',
+  // backgroundColor: vars.colors.accentComponent,
+  borderRadius: vars.borders.buttons,
+  color: vars.colors.accentText,
+  border: 'none',
+  // border: `1px solid ${vars.colors.accentBorders}`,
+
+  textTransform: 'uppercase',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  alignSelf: 'flex-start',
+
+  ':hover': {
+    // backgroundColor: vars.colors.accentComponentHover,
+    // border: `1px solid ${vars.colors.accentBordersHover}`,
+  },
+
+  ':active': {
+    filter: 'brightness(1.1)',
+  },
+});
+
+globalStyle(`${themeToggle} span`, {
+  fontSize: vars.sizes.respM,
+  paddingRight: '0.4rem',
 });

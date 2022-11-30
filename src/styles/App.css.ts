@@ -7,9 +7,16 @@ export const appContainer = style({
   flexFlow: 'column nowrap',
   alignItems: 'center',
   justifyContent: 'center',
-  position: 'relative',
-  gap: vars.sizes.respXL,
+
+  // gap: vars.sizes.respXL,
   // textAlign: 'center',
+});
+
+export const contentContainer = style({
+  width: '88vw',
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  position: 'relative',
 });
 
 export const welcomeScreen = style({
@@ -23,9 +30,39 @@ export const welcomeScreen = style({
   gap: '5vh',
 });
 
+export const corner = style({
+  position: 'absolute',
+  top: '2vh',
+  right: 0,
+});
+
+export const titleRow = style({
+  // width: '88vw',
+  width: '100%',
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+});
+
+export const pageTitle = style({
+  maxWidth: '100%',
+  color: vars.colors.accentText,
+  fontSize: vars.sizes.respM,
+  // paddingLeft: '6vw',
+});
+
+export const pageSubtitle = style({
+  color: '#faf4e8', // should not change with theme as it overlays the image
+  fontSize: vars.sizes.respL,
+  fontFamily: vars.fonts.body,
+  textTransform: 'none',
+});
+
 export const welcomeImage = style({
   height: '80vh',
-  width: '88vw',
+  // width: '88vw',
+  width: '100%',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 
@@ -37,12 +74,7 @@ export const welcomeImage = style({
 
   backgroundImage: "url('/Sable_KeyArt_Wallpaper.png')",
 
-  // '@media': {
-  //   [`screen and (min-width: ${breakpoints.md})`]: {
-  //     backgroundImage: "url('/testing.jpg')",
-  //     backgroundPositionY: '25%',
-  //   },
-  // },
+  // border: `1px solid ${vars.colors.text}`,
 });
 
 // From Open Props
@@ -50,28 +82,6 @@ const fadeInBloom = keyframes({
   '0%': { opacity: '0', filter: 'brightness(1) blur(20px)' },
   '10%': { opacity: '1', filter: 'brightness(2) blur(10px)' },
   '100%': { opacity: '1', filter: 'brightness(1) blur(0)' },
-});
-
-export const pageTitle = style({
-  maxWidth: '100%',
-  // width: '50%',
-  color: vars.colors.accentText, // should not change with theme
-  fontSize: vars.sizes.respM,
-  alignSelf: 'flex-start',
-  marginLeft: '6vw',
-
-  // '@media': {
-  //   [`screen and (min-width: ${breakpoints.md})`]: {
-  //     color: '#fbecfc',
-  //   },
-  // },
-});
-
-export const pageSubtitle = style({
-  color: '#faf4e8', // should not change with theme
-  fontSize: vars.sizes.respL,
-  fontFamily: vars.fonts.body,
-  textTransform: 'none',
 });
 
 export const scrollPrompt = style({
