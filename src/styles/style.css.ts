@@ -129,20 +129,6 @@ globalStyle(`${badge} a`, {
   color: vars.colors.accentText,
 });
 
-export const image = style({
-  width: 'min(90vw, 24rem)',
-  aspectRatio: '1',
-  objectFit: 'cover',
-  borderRadius: vars.borders.images,
-
-  // '@media': {
-  //   [`screen and (min-width: ${breakpoints.md})`]: {
-  //     width: 350,
-  //     height: 350,
-  //   },
-  // },
-});
-
 const dividerBase = style({
   borderTop: `1px solid ${vars.colors.text}`,
   width: '100%',

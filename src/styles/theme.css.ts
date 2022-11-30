@@ -120,24 +120,24 @@ const radixDark = {
   accentText: plumDark.plum12,
 };
 
-const openPropsDark = {
-  accentBackground: Cyan['--cyan-1'],
+// const openPropsDark = {
+//   accentBackground: Cyan['--cyan-1'],
 
-  accentComponent: Cyan['--cyan-10'],
-  accentComponentHover: Cyan['--cyan-9'],
-  accentComponentSelected: Cyan['--cyan-8'],
+//   accentComponent: Cyan['--cyan-10'],
+//   accentComponentHover: Cyan['--cyan-9'],
+//   accentComponentSelected: Cyan['--cyan-8'],
 
-  accentSubtleBorders: Cyan['--cyan-7'],
+//   accentSubtleBorders: Cyan['--cyan-7'],
 
-  accentBorders: Cyan['--cyan-6'],
-  accentBordersHover: Cyan['--cyan-5'],
+//   accentBorders: Cyan['--cyan-6'],
+//   accentBordersHover: Cyan['--cyan-5'],
 
-  accentSolid: Cyan['--cyan-4'],
-  accentSolidHover: Cyan['--cyan-3'],
+//   accentSolid: Cyan['--cyan-4'],
+//   accentSolidHover: Cyan['--cyan-3'],
 
-  accentTextMuted: Cyan['--cyan-2'],
-  accentText: Cyan['--cyan-1'],
-};
+//   accentTextMuted: Cyan['--cyan-2'],
+//   accentText: Cyan['--cyan-1'],
+// };
 
 export const darkTheme = createTheme(colors, {
   ...radixDark,
@@ -146,7 +146,7 @@ export const darkTheme = createTheme(colors, {
   black: '#ffffff',
 
   background: mauveDark.mauve1,
-  backgroundSubtle: mauveDark.mauve2,
+  backgroundSubtle: mauveDark.mauve1,
 
   component: mauveDark.mauve3,
   componentHover: mauveDark.mauve4,

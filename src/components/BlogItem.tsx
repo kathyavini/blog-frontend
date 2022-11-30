@@ -1,27 +1,44 @@
-import { useState } from 'react';
-import { button, image, divider } from '../styles/style.css';
+import { format, parseISO } from 'date-fns';
+import { button, divider } from '../styles/style.css';
 import { stack } from '../styles/recipes.css';
-import { container, postTitle, date, greyscaleImage } from './BlogItem.css';
+import {
+  container,
+  postTitle,
+  postContent,
+  date,
+  greyscaleImage,
+} from './BlogItem.css';
 
-interface BlogItemProps {
-  image: string;
+import testImage from '../assets/testing.jpg';
+
+export interface Post {
+  author: string | null;
+  body: string;
+  created_at: string;
+  slug: string;
+  title: string;
+  url: string;
+  id: string;
 }
 
-export function BlogItem({ image }: BlogItemProps) {
-  const [imgAlt, setImgAlt] = useState(true);
+interface BlogItemProps {
+  post: Post;
+}
 
+export function BlogItem({ post }: BlogItemProps) {
   return (
-    <div className={container}>
-      <div
-        className={stack({ gap: 'none', align: 'start' })}
-        onMouseEnter={() => setImgAlt(false)}
-        onMouseLeave={() => setImgAlt(true)}>
-        <img className={greyscaleImage} src={image} />
-        <h2 className={postTitle}>Post Name</h2>
-        {/* <h3>Post Description</h3> */}
-        {/* <div className={divider.small} /> */}
-        <p className={date}>18 November, 2022</p>
-      </div>
-    </div>
+    <article className={container}>
+      <a href="">
+        <div className={stack({ gap: 'none', align: 'start' })}>
+          <img className={greyscaleImage} src={testImage} />
+          <h2 className={postTitle}>{post.title}</h2>
+          <h3 className={postContent}>{post.body.slice(0, 80)} ...</h3>
+          <p className={date}>
+            Posted:{' '}
+            {format(parseISO(post.created_at), "MMMM dd, yyyy 'at' h:mbbb")}
+          </p>
+        </div>
+      </a>
+    </article>
   );
 }

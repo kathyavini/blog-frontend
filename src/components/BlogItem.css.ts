@@ -1,15 +1,25 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars, breakpoints } from '../styles/theme.css';
-import { image } from '../styles/style.css';
 
 export const container = style({
-  textAlign: 'center',
+  width: 'min(90vw, 24rem)',
   padding: 'clamp(0.5rem, 4vw, 2.5rem)',
   transition: 'all 100ms',
+  textAlign: 'start',
+});
+
+globalStyle(`${container} a`, {
+  textDecoration: 'none',
 });
 
 export const postTitle = style({
   fontWeight: 500,
+});
+
+export const postContent = style({
+  fontWeight: 300,
+  fontSize: '1rem',
+  color: vars.colors.accentText,
 });
 
 export const date = style({
@@ -17,16 +27,24 @@ export const date = style({
   color: vars.colors.textMuted,
 });
 
-export const greyscaleImage = style([
-  image,
-  {
-    filter: 'grayscale(0%)',
-    WebkitFilter: 'grayscale(0%)',
-    transition: '.3s ease-in-out',
+export const image = style({
+  width: 'min(90vw, 24rem)',
+  aspectRatio: '1',
 
-    ':hover': {
-      filter: 'grayscale(80%)',
-      WebkitFilter: 'grayscale(80%)',
-    },
+  borderRadius: vars.borders.images,
+});
+
+export const greyscaleImage = style({
+  width: '100%',
+  aspectRatio: '1',
+
+  borderRadius: vars.borders.images,
+  filter: 'grayscale(0%)',
+  WebkitFilter: 'grayscale(0%)',
+  transition: '.3s ease-in-out',
+
+  ':hover': {
+    filter: 'grayscale(80%)',
+    WebkitFilter: 'grayscale(80%)',
   },
-]);
+});
