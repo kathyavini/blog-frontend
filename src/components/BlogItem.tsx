@@ -1,5 +1,7 @@
 import { format, parseISO } from 'date-fns';
-import { button, divider } from '../styles/style.css';
+import { myCld } from '../config/cloudinary';
+import { AdvancedImage, responsive, placeholder } from '@cloudinary/react';
+
 import { stack } from '../styles/recipes.css';
 import {
   container,
@@ -8,8 +10,6 @@ import {
   date,
   greyscaleImage,
 } from './BlogItem.css';
-
-import testImage from '../assets/testing.jpg';
 
 export interface Post {
   author: string | null;
@@ -20,6 +20,7 @@ export interface Post {
   url: string;
   id: string;
   image_cloud_url: string;
+  image_cloud_id: string;
 }
 
 interface BlogItemProps {
@@ -27,11 +28,20 @@ interface BlogItemProps {
 }
 
 export function BlogItem({ post }: BlogItemProps) {
+  const imageId = myCld
+    .image(post.image_cloud_id)
+    .format('auto')
+    .quality('auto');
+
   return (
     <article className={container}>
       <a href="">
         <div className={stack({ gap: 'none', align: 'start' })}>
-          <img className={greyscaleImage} src={post.image_cloud_url} />
+          <AdvancedImage
+            className={greyscaleImage}
+            cldImg={imageId}
+            plugins={[responsive(), placeholder({ mode: 'predominant' })]}
+          />
           <h2 className={postTitle}>{post.title}</h2>
           <h3 className={postContent}>{post.body.slice(0, 80)} ...</h3>
           <p className={date}>
