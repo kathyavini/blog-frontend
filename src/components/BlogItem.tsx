@@ -19,6 +19,7 @@ export interface Post {
   title: string;
   url: string;
   id: string;
+  image_cloud_url: string;
 }
 
 interface BlogItemProps {
@@ -30,7 +31,7 @@ export function BlogItem({ post }: BlogItemProps) {
     <article className={container}>
       <a href="">
         <div className={stack({ gap: 'none', align: 'start' })}>
-          <img className={greyscaleImage} src={testImage} />
+          <img className={greyscaleImage} src={post.image_cloud_url} />
           <h2 className={postTitle}>{post.title}</h2>
           <h3 className={postContent}>{post.body.slice(0, 80)} ...</h3>
           <p className={date}>

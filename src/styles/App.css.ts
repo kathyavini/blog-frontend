@@ -19,4 +19,5 @@ export const contentContainer = style({
 export const main = style({
   width: '100%',
   padding: vars.sizes.respXL,
+  textAlign: 'center',
 });

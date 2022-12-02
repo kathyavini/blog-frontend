@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../config/axios';
 import { BlogItem } from './BlogItem';
 import { Post } from './BlogItem';
 
@@ -12,7 +12,7 @@ export const BlogList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/posts')
+      .get('/posts')
       .then((response) => {
         console.log(response.data);
         setError(false);

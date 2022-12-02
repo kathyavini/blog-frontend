@@ -28,9 +28,11 @@ function App() {
           className={[main, stack({ gap: 'md', align: 'center' })].join(' ')}>
           <h1>Welcome to our Favourite Worlds!</h1>
           <p>
-            Here we blog about some of our favourite video game worlds and what
-            we love about them. Learn more <a href="">about us</a>, or continue
-            on <a href="#posts">to the blog posts</a>.
+            Once the API and the two frontends (authoring + viewing) are
+            completed, this will be the home of our blog "Our Favourite Worlds."
+            For now you can continue on to the{' '}
+            <a href="#posts">filler blog posts</a> but watch this space for
+            updates!
           </p>
 
           <BlogList />
