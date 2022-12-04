@@ -153,7 +153,7 @@ export const divider = styleVariants({
 });
 
 export const themeToggle = style({
-  padding: '.8em .8em',
+  paddingBlock: '.8em',
   backgroundColor: 'transparent',
   // backgroundColor: vars.colors.accentComponent,
   borderRadius: vars.borders.buttons,
@@ -181,5 +181,5 @@ export const themeToggle = style({
 
 globalStyle(`${themeToggle} span`, {
   fontSize: vars.sizes.respM,
-  paddingRight: '0.4rem',
+  paddingRight: '0.1em',
 });

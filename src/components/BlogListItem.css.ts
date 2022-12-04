@@ -3,7 +3,6 @@ import { vars, breakpoints } from '../styles/theme.css';
 
 export const container = style({
   width: 'min(90vw, 24rem)',
-  padding: 'clamp(0.5rem, 4vw, 2.5rem)',
   transition: 'all 100ms',
   textAlign: 'start',
 });
@@ -13,6 +12,7 @@ globalStyle(`${container} a`, {
 });
 
 export const postTitle = style({
+  width: '100%',
   fontWeight: 500,
 });
 
@@ -25,6 +25,7 @@ export const postContent = style({
 export const date = style({
   fontWeight: 500,
   color: vars.colors.textMuted,
+  width: '100%',
 });
 
 export const image = style({

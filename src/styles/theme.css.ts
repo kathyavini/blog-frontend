@@ -9,7 +9,8 @@ import { Cyan } from './openPropsColors';
 
 const root = createGlobalTheme(':root', {
   fonts: {
-    heading: '"Cabin", sans-serif',
+    // heading: '"Cabin", sans-serif',
+    heading: 'Raleway, sans-serif',
     body: '"Open Sans", sans-serif',
   },
   sizes: {

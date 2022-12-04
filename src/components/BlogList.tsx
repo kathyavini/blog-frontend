@@ -1,35 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from '../config/axios';
 import { HashLoader } from 'react-spinners';
-import { BlogItem } from './BlogItem';
-import { Post } from './BlogItem';
+import { BlogItem } from './BlogListItem';
+import { Post } from '../App';
 
 import { stack } from '../styles/recipes.css';
 import { postList } from './BlogList.css';
 
-export const BlogList = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+interface BlogListProps {
+  posts: Post[];
+  loading: boolean;
+  error: boolean;
+}
 
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get('/posts')
-      .then((response) => {
-        // console.log(response.data);
-        setPosts(response.data);
-        setError(false);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(true);
-        setLoading(false);
-      })
-      .finally(() => {});
-  }, []);
-
+export const BlogList = ({ posts, loading, error }: BlogListProps) => {
   const allPosts = posts.map((post) => <BlogItem post={post} key={post.id} />);
 
   return (
@@ -38,14 +22,17 @@ export const BlogList = () => {
       {loading && (
         <div className={stack({ align: 'center' })} style={{ padding: '1rem' }}>
           <HashLoader color={'purple'} />
-          <h2>Loading posts...</h2>
         </div>
       )}
 
       {error && (
         <div
           className={stack({ align: 'stretch' })}
-          style={{ padding: '1rem' }}>
+          style={{
+            padding: '1rem',
+            marginBottom: '10vh',
+            textAlign: 'center',
+          }}>
           <h2>Uh-oh, couldn't load posts...</h2>
           <p>Are you accessing the blog API from an authorized domain?</p>
         </div>

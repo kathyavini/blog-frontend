@@ -6,4 +6,6 @@ export const postList = style({
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'center',
+  gap: 'clamp(3rem, 5vw, 8rem)',
+  marginBottom: '10vh',
 });

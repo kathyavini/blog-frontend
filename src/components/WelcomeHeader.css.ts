@@ -1,10 +1,16 @@
 import { style, globalStyle, keyframes } from '@vanilla-extract/css';
 import { vars, breakpoints } from '../styles/theme.css';
 
+export const welcomeContainer = style({
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+});
+
 export const welcomeScreen = style({
   height: '100vh',
   width: '100%',
-
   display: 'flex',
   flexFlow: 'column nowrap',
   alignItems: 'center',
@@ -12,26 +18,12 @@ export const welcomeScreen = style({
   gap: '5vh',
 });
 
-export const corner = style({
-  position: 'absolute',
-  top: '2vh',
-  right: 0,
-});
-
-export const titleRow = style({
-  // width: '88vw',
-  width: '100%',
-  display: 'flex',
-  flexFlow: 'row nowrap',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-});
-
 export const pageTitle = style({
   maxWidth: '100%',
   color: vars.colors.accentText,
   fontSize: vars.sizes.respM,
-  // paddingLeft: '6vw',
+  fontWeight: 500,
+  position: 'relative',
 });
 
 export const pageSubtitle = style({
@@ -42,8 +34,8 @@ export const pageSubtitle = style({
 });
 
 export const welcomeImage = style({
+  marginTop: '2vh',
   height: '80vh',
-  // width: '88vw',
   width: '100%',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -73,4 +65,10 @@ export const scrollPrompt = style({
   animationDuration: '2s',
   animationDelay: '1s',
   animationFillMode: 'forwards',
+});
+
+export const message = style({
+  width: 'min(100%, 60rem)',
+  padding: vars.sizes.respXL,
+  textAlign: 'center',
 });

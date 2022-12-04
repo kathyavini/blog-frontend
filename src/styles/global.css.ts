@@ -9,7 +9,7 @@ globalStyle('*', {
 });
 
 globalStyle('html', {
-  scrollBehavior: 'smooth',
+  // scrollBehavior: 'smooth', // unfortunately behaves badly with ScrollToTop
 });
 
 globalStyle('html, body', {

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import { myCld } from '../config/cloudinary';
 import { AdvancedImage, responsive, placeholder } from '@cloudinary/react';
@@ -9,20 +10,11 @@ import {
   postContent,
   date,
   greyscaleImage,
-} from './BlogItem.css';
+} from './BlogListItem.css';
 
-export interface Post {
-  author: string | null;
-  body: string;
-  created_at: string;
-  slug: string;
-  title: string;
-  url: string;
-  id: string;
-  image_cloud_url: string;
-  image_cloud_id: string;
-}
+import testingImage from '../assets/milad-fakurian-PGdW_bHDbpI-unsplash.jpg';
 
+import { Post } from '../App';
 interface BlogItemProps {
   post: Post;
 }
@@ -35,21 +27,21 @@ export function BlogItem({ post }: BlogItemProps) {
 
   return (
     <article className={container}>
-      <a href="">
+      <Link to={post.slug}>
         <div className={stack({ gap: 'none', align: 'start' })}>
           <AdvancedImage
             className={greyscaleImage}
             cldImg={imageId}
             plugins={[responsive(), placeholder({ mode: 'predominant' })]}
           />
+          {/* <img src={testingImage} alt="" className={greyscaleImage} /> */}
           <h2 className={postTitle}>{post.title}</h2>
           <h3 className={postContent}>{post.body.slice(0, 80)} ...</h3>
           <p className={date}>
-            Posted:{' '}
-            {format(parseISO(post.created_at), "MMMM dd, yyyy 'at' h:mbbb")}
+            {format(parseISO(post.created_at), 'MMMM dd, yyyy')}
           </p>
         </div>
-      </a>
+      </Link>
     </article>
   );
 }
