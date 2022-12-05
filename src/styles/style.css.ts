@@ -1,5 +1,6 @@
 import { style, styleVariants, globalStyle } from '@vanilla-extract/css';
 import { vars, breakpoints } from './theme.css';
+import { stack } from './recipes.css';
 
 export const buttonBase = style({
   padding: '0.7rem 2rem',
@@ -182,4 +183,16 @@ export const themeToggle = style({
 globalStyle(`${themeToggle} span`, {
   fontSize: vars.sizes.respM,
   paddingRight: '0.1em',
+});
+
+export const spinner = style([
+  stack({ align: 'center' }),
+  {
+    padding: '1rem',
+    justifyContent: 'center',
+  },
+]);
+
+globalStyle(`${spinner} span span`, {
+  borderColor: `${vars.colors.accentTextMuted} !important`,
 });

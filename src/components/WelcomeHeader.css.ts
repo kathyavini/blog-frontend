@@ -1,20 +1,15 @@
 import { style, globalStyle, keyframes } from '@vanilla-extract/css';
 import { vars, breakpoints } from '../styles/theme.css';
-
-export const welcomeContainer = style({
-  display: 'flex',
-  flexFlow: 'column nowrap',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-});
+import { button } from '../styles/style.css';
+import { stack } from '../styles/recipes.css';
 
 export const welcomeScreen = style({
-  height: '100vh',
+  height: '85dvh',
   width: '100%',
   display: 'flex',
   flexFlow: 'column nowrap',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   gap: '5vh',
 });
 
@@ -26,6 +21,7 @@ export const pageTitle = style({
   position: 'relative',
 });
 
+// Not currently in use but might restore
 export const pageSubtitle = style({
   color: '#faf4e8', // should not change with theme as it overlays the image
   fontSize: vars.sizes.respL,
@@ -34,21 +30,29 @@ export const pageSubtitle = style({
 });
 
 export const welcomeImage = style({
-  marginTop: '2vh',
-  height: '80vh',
+  height: '100%',
   width: '100%',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-
   display: 'flex',
   flexFlow: 'column nowrap',
   alignItems: 'center',
   justifyContent: 'center',
   gap: '20vh',
 
-  backgroundImage: "url('/Sable_KeyArt_Wallpaper.png')",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundImage: "url('/Sable_KeyArt_lowres.jpg')",
 
-  // border: `1px solid ${vars.colors.text}`,
+  border: `1px solid ${vars.colors.text}`,
+  position: 'relative',
+});
+
+globalStyle(`${welcomeImage} img`, {
+  height: '100%',
+  width: '100%',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  objectFit: 'cover',
 });
 
 // From Open Props
@@ -58,17 +62,26 @@ const fadeInBloom = keyframes({
   '100%': { opacity: '1', filter: 'brightness(1) blur(0)' },
 });
 
-export const scrollPrompt = style({
-  marginTop: '40vh',
-  opacity: 0,
-  animationName: fadeInBloom,
-  animationDuration: '2s',
-  animationDelay: '1s',
-  animationFillMode: 'forwards',
-});
+export const scrollPrompt = style([
+  button.filled,
+  {
+    marginTop: '40vh',
+    opacity: 0,
+    animationName: fadeInBloom,
+    animationDuration: '2s',
+    animationFillMode: 'forwards',
+    border: `1px solid ${vars.colors.text}`,
+    ':hover': {
+      border: `1px solid ${vars.colors.text}`,
+    },
+  },
+]);
 
-export const message = style({
-  width: 'min(100%, 60rem)',
-  padding: vars.sizes.respXL,
-  textAlign: 'center',
-});
+export const message = style([
+  stack({ gap: 'md', align: 'center' }),
+  {
+    width: 'min(100%, 60rem)',
+    padding: vars.sizes.respXL,
+    textAlign: 'center',
+  },
+]);

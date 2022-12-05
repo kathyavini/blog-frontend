@@ -1,40 +1,49 @@
-import { button } from '../styles/style.css';
-import { stack } from '../styles/recipes.css';
+import { useRef } from 'react';
+import { AdvancedImage, placeholder } from '@cloudinary/react';
+import { badge } from '../styles/style.css';
 import {
-  welcomeContainer,
   welcomeScreen,
   welcomeImage,
   scrollPrompt,
   message,
 } from './WelcomeHeader.css';
-import { TitleRow } from './TitleRow';
+import { myCld, useCloudinary, homepageImgId } from '../config/cloudinary';
+import headerImage from '../assets/Sable_KeyArt_Wallpaper.png';
 
-export interface HeaderProps {
-  isDarkTheme: Boolean;
-  setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
-}
-export const WelcomeHeader = ({ setIsDarkTheme, isDarkTheme }: HeaderProps) => {
+export const WelcomeHeader = () => {
+  const scrollRef = useRef<HTMLSelectElement>(null!);
+
+  const imageId = myCld.image(homepageImgId).format('auto');
+
   return (
     <>
       <header className={welcomeScreen}>
-        {/* <TitleRow setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} /> */}
         <div className={welcomeImage}>
-          <a href="#message">
-            <button className={[button.filled, scrollPrompt].join(' ')}>
-              Enter
-            </button>
-          </a>
+          {useCloudinary ? (
+            <AdvancedImage
+              cldImg={imageId}
+              plugins={[placeholder({ mode: 'blur' })]}
+            />
+          ) : (
+            <img src={headerImage} />
+          )}
+          <button
+            className={scrollPrompt}
+            onClick={() =>
+              scrollRef.current.scrollIntoView({ behavior: 'smooth' })
+            }>
+            Enter
+          </button>
         </div>
       </header>
-      <section
-        id="message"
-        className={[message, stack({ gap: 'md', align: 'center' })].join(' ')}>
+      <section ref={scrollRef} id="message" className={message}>
         <h1>Welcome to our Favourite Worlds!</h1>
         <p>
-          Once the API and the two frontends (authoring + viewing) are
-          completed, this will be the home of our blog "Our Favourite Worlds."
-          For now you can continue on to the{' '}
-          <a href="#posts">filler blog posts</a> but watch this space for
+          This page is a work in progress! Once it's completed, this will be the
+          home of our blog "Our Favourite Worlds."
+        </p>
+        <p className={badge}>
+          For now all the blog posts are filler text, but watch this space for
           updates!
         </p>
       </section>

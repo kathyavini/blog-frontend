@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import axios from '../config/axios';
-import { HashLoader } from 'react-spinners';
-import { BlogItem } from './BlogListItem';
-import { Post } from '../App';
+import { RingLoader } from 'react-spinners';
 
-import { stack } from '../styles/recipes.css';
-import { postList } from './BlogList.css';
+import { BlogItem } from './BlogItem';
+import { Post } from '../hooks/usePostFetch';
+
+import { postList, errorContainer } from './BlogList.css';
+import { spinner } from '../styles/style.css';
 
 interface BlogListProps {
   posts: Post[];
@@ -14,25 +13,25 @@ interface BlogListProps {
 }
 
 export const BlogList = ({ posts, loading, error }: BlogListProps) => {
-  const allPosts = posts.map((post) => <BlogItem post={post} key={post.id} />);
+  const allPosts = posts.map((post) => (
+    <BlogItem //
+      post={post}
+      key={post.id}
+    />
+  ));
 
   return (
-    <section id="posts" className={postList}>
-      {allPosts}
+    <section className={postList}>
       {loading && (
-        <div className={stack({ align: 'center' })} style={{ padding: '1rem' }}>
-          <HashLoader color={'purple'} />
+        <div className={spinner}>
+          <RingLoader />
         </div>
       )}
 
+      {allPosts}
+
       {error && (
-        <div
-          className={stack({ align: 'stretch' })}
-          style={{
-            padding: '1rem',
-            marginBottom: '10vh',
-            textAlign: 'center',
-          }}>
+        <div className={errorContainer}>
           <h2>Uh-oh, couldn't load posts...</h2>
           <p>Are you accessing the blog API from an authorized domain?</p>
         </div>
