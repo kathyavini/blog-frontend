@@ -11,7 +11,7 @@ export const TitleRow = ({ setIsDarkTheme, isDarkTheme }: TitleRowProps) => {
   const { pathname } = useLocation();
 
   return (
-    <div className={pathname == '/' ? homepage : post}>
+    <header className={pathname == '/' ? homepage : post}>
       <h1 className={pathname == '/' ? titleHome : titlePost}>
         Our Favourite Worlds
       </h1>
@@ -29,6 +29,6 @@ export const TitleRow = ({ setIsDarkTheme, isDarkTheme }: TitleRowProps) => {
           </>
         )}
       </button>
-    </div>
+    </header>
   );
 };

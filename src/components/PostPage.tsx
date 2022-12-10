@@ -45,21 +45,23 @@ export const PostPage = ({ posts, loading }: PostPageProps) => {
 
   const imageId = myCld.image(post?.image_cloud_id).format('auto');
 
-  const postComments = comments.map((comment) => (
-    <div key={comment.id}>
-      <p>{comment.author.displayName}</p>
-      <p>{format(parseISO(comment.published_at), 'MMMM dd, yyyy ')}</p>
-      <p>{comment.body}</p>
-      {comment.childComments &&
-        comment.childComments.map((child) => (
-          <div key={child.id} className={commentReply}>
-            <p>{child.author.displayName}</p>
-            <p>{format(parseISO(child.published_at), 'MMMM dd, yyyy ')}</p>
-            <p>{child.body}</p>
-          </div>
-        ))}
-    </div>
-  ));
+  const postComments = comments.map(
+    ({ id, author, published_at, body, childComments }) => (
+      <div key={id}>
+        <p>{author.displayName}</p>
+        <p>{format(parseISO(published_at), 'MMMM dd, yyyy ')}</p>
+        <p>{body}</p>
+        {childComments &&
+          childComments.map(({ id, author, published_at, body }) => (
+            <div key={id} className={commentReply}>
+              <p>{author.displayName}</p>
+              <p>{format(parseISO(published_at), 'MMMM dd, yyyy ')}</p>
+              <p>{body}</p>
+            </div>
+          ))}
+      </div>
+    )
+  );
 
   return (
     <article className={container}>

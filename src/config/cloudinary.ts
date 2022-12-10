@@ -6,7 +6,7 @@ export const myCld = new Cloudinary({
   },
 });
 
-// When set to false local test images are used to save Cloudinary on usage/transforms
+// When set to false local test images are used to save on Cloudinary usage/transforms
 export const useCloudinary = true;
 
 export const homepageImgId = 'blog-api/jt6tkhqpio0ulshurxk7';

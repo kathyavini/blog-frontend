@@ -17,7 +17,7 @@ export const WelcomeHeader = () => {
 
   return (
     <>
-      <header className={welcomeScreen}>
+      <section className={welcomeScreen}>
         <div className={welcomeImage}>
           {useCloudinary ? (
             <AdvancedImage
@@ -35,7 +35,7 @@ export const WelcomeHeader = () => {
             Enter
           </button>
         </div>
-      </header>
+      </section>
       <section ref={scrollRef} id="message" className={message}>
         <h1>Welcome to our Favourite Worlds!</h1>
         <p>
