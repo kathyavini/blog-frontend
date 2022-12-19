@@ -92,6 +92,7 @@ export const PostPage = ({ posts, loading }: PostPageProps) => {
               <h1>{post.title}</h1>
             </div>
             <button
+              aria-label="Scroll to Post"
               className={scrollIcon}
               onClick={() =>
                 contentRef.current.scrollIntoView({ behavior: 'smooth' })

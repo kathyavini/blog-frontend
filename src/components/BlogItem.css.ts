@@ -23,6 +23,7 @@ export const container = style([
 ]);
 
 export const blogImage = style({
+  cursor: 'pointer',
   width: '100%',
   aspectRatio: '3 / 2',
 
@@ -125,7 +126,7 @@ globalStyle(`${container}:nth-child(4), ${container}:nth-child(5)`, {
   },
 });
 
-globalStyle(`${container}:nth-child(4) a, ${container}:nth-child(5) a`, {
+globalStyle(`${container}:nth-child(4) img, ${container}:nth-child(5) img`, {
   '@media': {
     [`screen and (min-width: ${breakpoints.lg})`]: {
       gridRow: '1 / 2',

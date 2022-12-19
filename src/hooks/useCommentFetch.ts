@@ -19,7 +19,7 @@ export const useCommentFetch = (blogId: string) => {
     axios
       .get(`/${blogId}/comments/`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setComments(response.data);
         setError(false);
       })

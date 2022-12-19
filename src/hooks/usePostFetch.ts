@@ -23,7 +23,7 @@ export const usePostFetch = () => {
     axios
       .get('/posts')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPosts(response.data);
         setError(false);
         setLoading(false);

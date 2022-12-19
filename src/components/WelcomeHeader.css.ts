@@ -4,13 +4,18 @@ import { button } from '../styles/style.css';
 import { stack } from '../styles/recipes.css';
 
 export const welcomeScreen = style({
-  height: '85dvh',
+  height: '79vh',
   width: '100%',
   display: 'flex',
   flexFlow: 'column nowrap',
   alignItems: 'center',
   justifyContent: 'flex-start',
   gap: '5vh',
+  '@media': {
+    [`(min-width: ${breakpoints.sm})`]: {
+      height: '85vh',
+    },
+  },
 });
 
 export const pageTitle = style({
@@ -34,7 +39,7 @@ export const welcomeImage = style({
   backgroundPosition: 'center',
   backgroundImage: "url('/Sable_KeyArt_lowres.jpg')",
 
-  border: `1px solid ${vars.colors.text}`,
+  // border: `1px solid ${vars.colors.text}`,
   position: 'relative',
 });
 
@@ -62,18 +67,19 @@ export const scrollPrompt = style([
     animationName: fadeInBloom,
     animationDuration: '2s',
     animationFillMode: 'forwards',
-    border: `1px solid ${vars.colors.text}`,
-    ':hover': {
-      border: `1px solid ${vars.colors.text}`,
-    },
+    // border: `1px solid ${vars.colors.text}`,
+    // ':hover': {
+    //   border: `1px solid ${vars.colors.text}`,
+    // },
   },
 ]);
 
 export const message = style([
   stack({ gap: 'xs', align: 'center' }),
   {
-    width: 'min(100%, 60rem)',
-    padding: vars.sizes.respXL,
+    width: '100%',
+    maxWidth: '50rem',
+    paddingBlock: vars.sizes.respXL,
     textAlign: 'center',
   },
 ]);

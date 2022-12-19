@@ -24,9 +24,15 @@ export const WelcomeHeader = () => {
             <AdvancedImage
               cldImg={imageId}
               plugins={[placeholder({ mode: 'blur' })]}
+              loading="eager"
+              alt="Image from the game Sable"
             />
           ) : (
-            <img src={headerImage} />
+            <img
+              src={headerImage}
+              loading="eager"
+              alt="Image from the game Sable"
+            />
           )}
           <button
             className={scrollPrompt}
