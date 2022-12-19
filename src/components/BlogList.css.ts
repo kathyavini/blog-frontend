@@ -4,10 +4,10 @@ import { stack } from '../styles/recipes.css';
 
 export const postList = style({
   width: '100%',
+  maxWidth: '1400px',
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'center',
-  gap: 'clamp(3rem, 5vw, 8rem)',
   marginBottom: '10vh',
 });
 

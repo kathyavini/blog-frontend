@@ -21,14 +21,6 @@ export const pageTitle = style({
   position: 'relative',
 });
 
-// Not currently in use but might restore
-export const pageSubtitle = style({
-  color: '#faf4e8', // should not change with theme as it overlays the image
-  fontSize: vars.sizes.respL,
-  fontFamily: vars.fonts.body,
-  textTransform: 'none',
-});
-
 export const welcomeImage = style({
   height: '100%',
   width: '100%',
@@ -78,10 +70,16 @@ export const scrollPrompt = style([
 ]);
 
 export const message = style([
-  stack({ gap: 'md', align: 'center' }),
+  stack({ gap: 'xs', align: 'center' }),
   {
     width: 'min(100%, 60rem)',
     padding: vars.sizes.respXL,
     textAlign: 'center',
   },
 ]);
+
+export const pageSubtitle = style({
+  fontSize: vars.sizes.respM,
+  fontFamily: vars.fonts.body,
+  textTransform: 'none',
+});

@@ -4,7 +4,7 @@ import { RingLoader } from 'react-spinners';
 import { format, parseISO } from 'date-fns';
 import { useCommentFetch } from '../hooks/useCommentFetch';
 import { myCld, useCloudinary } from '../config/cloudinary';
-import { AdvancedImage, placeholder } from '@cloudinary/react';
+import { AdvancedImage, placeholder, responsive } from '@cloudinary/react';
 import testingImage from '../assets/milad-fakurian-PGdW_bHDbpI-unsplash.jpg';
 
 import { Post } from '../hooks/usePostFetch';
@@ -36,14 +36,14 @@ export const PostPage = ({ posts, loading }: PostPageProps) => {
   const contentRef = useRef<HTMLDivElement>(null!);
 
   const { blogId } = useParams();
-  console.log('BlogId is', blogId);
+  // console.log('BlogId is', blogId);
 
   // Originally matched in App.tsx and only sent the needed post, but there would be a flash of 404 (post == null) on every page refresh of a parametarized route
   const post = posts.find((post) => post.slug === blogId);
 
   const [comments, error] = useCommentFetch(blogId!);
 
-  const imageId = myCld.image(post?.image_cloud_id).format('auto');
+  const imageId = myCld.image(post?.image_cloud_id);
 
   const postComments = comments.map(
     ({ id, author, published_at, body, childComments }) => (
@@ -77,7 +77,10 @@ export const PostPage = ({ posts, loading }: PostPageProps) => {
               <AdvancedImage
                 className={mainImage}
                 cldImg={imageId}
-                plugins={[placeholder({ mode: 'blur' })]}
+                plugins={[
+                  responsive({ steps: 200 }),
+                  placeholder({ mode: 'blur' }),
+                ]}
               />
             ) : (
               <img src={testingImage} alt="" className={mainImage} />

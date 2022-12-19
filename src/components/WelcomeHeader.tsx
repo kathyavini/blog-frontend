@@ -6,6 +6,7 @@ import {
   welcomeImage,
   scrollPrompt,
   message,
+  pageSubtitle,
 } from './WelcomeHeader.css';
 import { myCld, useCloudinary, homepageImgId } from '../config/cloudinary';
 import headerImage from '../assets/Sable_KeyArt_Wallpaper.png';
@@ -13,7 +14,7 @@ import headerImage from '../assets/Sable_KeyArt_Wallpaper.png';
 export const WelcomeHeader = () => {
   const scrollRef = useRef<HTMLSelectElement>(null!);
 
-  const imageId = myCld.image(homepageImgId).format('auto');
+  const imageId = myCld.image(homepageImgId);
 
   return (
     <>
@@ -37,12 +38,8 @@ export const WelcomeHeader = () => {
         </div>
       </section>
       <section ref={scrollRef} id="message" className={message}>
-        <h1>Welcome to our Favourite Worlds!</h1>
-        <p>
-          This page is a work in progress! Once it's completed, this will be the
-          home of our blog "Our Favourite Worlds."
-        </p>
-        <p className={badge}>
+        <h1>Our Favourite Worlds</h1>
+        <p className={pageSubtitle}>
           For now all the blog posts are filler text, but watch this space for
           updates!
         </p>

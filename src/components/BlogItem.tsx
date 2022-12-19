@@ -16,7 +16,8 @@ import {
   postTitle,
   contentPreview,
   date,
-  greyscaleImage,
+  blogImage,
+  blogText,
 } from './BlogItem.css';
 
 import { Post } from '../hooks/usePostFetch';
@@ -35,19 +36,27 @@ export function BlogItem({ post }: BlogItemProps) {
       <Link to={post.slug}>
         {useCloudinary ? (
           <AdvancedImage
-            className={greyscaleImage}
+            className={blogImage}
             cldImg={imageId}
-            plugins={[lazyload(), responsive(), placeholder({ mode: 'blur' })]}
+            plugins={[
+              lazyload(),
+              placeholder({ mode: 'blur' }),
+              responsive({ steps: 200 }),
+            ]}
           />
         ) : (
-          <img src={testingImage} alt="" className={greyscaleImage} />
+          <img src={testingImage} alt="" className={blogImage} />
         )}
-        <h2 className={postTitle}>{post.title}</h2>
       </Link>
-      <h3 className={contentPreview}>{post.body.slice(0, 80)} ...</h3>
-      <p className={date}>
-        {format(parseISO(post.created_at), 'MMMM dd, yyyy')}
-      </p>
+
+      <section className={blogText}>
+        <h2 className={postTitle}>{post.title}</h2>
+
+        <h3 className={contentPreview}>{post.body.slice(0, 80)} ...</h3>
+        <p className={date}>
+          {format(parseISO(post.created_at), 'MMMM dd, yyyy')}
+        </p>
+      </section>
     </article>
   );
 }

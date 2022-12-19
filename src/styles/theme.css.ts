@@ -31,6 +31,7 @@ const root = createGlobalTheme(':root', {
 export const breakpoints = {
   sm: '650px',
   md: '860px',
+  lg: '1024px',
 };
 
 const colors = createThemeContract({
